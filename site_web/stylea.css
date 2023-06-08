@@ -1,0 +1,53 @@
+/* custom font */
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/* basic reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  /* Image only BG fallback */
+  /* background = gradient + image pattern combo */
+  background: linear-gradient(
+    rgba(196, 102, 0, 0.6),
+    rgba(155, 89, 182, 0.6)
+  ), url(background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+body {
+  font-family: montserrat, arial, verdana;
+}
+
+/* Content */
+.content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.redirect-button {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px 20px;
+  margin: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: bold;
+  color: white;
+  margin-top: 50px;
+}
