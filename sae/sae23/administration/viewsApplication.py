@@ -8,12 +8,12 @@ def ajout_Application(request):
         form = applicationsForm(request)
         if form.is_valid():
             application = form.save()
-            return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"application" : application})
+            return render(request,"administration/Application/traitement-ajout.html",{"application" : application})
         else:
-            return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"form": form})
+            return render(request,"administration/Application/ajout.html",{"form": form})
     else :
         form = applicationsForm()
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXX",{"form" : form})
+        return render(request,"administration/Application/ajout.html",{"form" : form})
 
 def traitement_ajout_Application(request):
     form = applicationsForm(request.POST)
