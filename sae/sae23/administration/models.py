@@ -47,8 +47,6 @@ class services (models.Model):
 class applications (models.Model):
     nom = models.CharField(max_length=100)
     logo = models.ImageField(upload_to='images/')
-    prenom = models.CharField(max_length=100)
-    email = models.EmailField(max_length=100)
     serveur = models.ForeignKey("serveurs", on_delete=models.CASCADE, default=None)
     utilisateur = models.ForeignKey("utilisateurs", on_delete=models.CASCADE, default=None)
 
