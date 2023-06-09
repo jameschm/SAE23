@@ -1,198 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
   <meta charset="UTF-8">
   <title>CodePen - formulaire</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="./style.css">
+
 </head>
 <body>
-  <form id="msform">
-    <ul id="progressbar">
-      <li class="active">Ajouter un serveur</li>
-      <li>Félicitation</li>
-    </ul>
-    <fieldset>
-      <h2 class="fs-title">Ajouter une application</h2>
-      <h3 class="fs-subtitle">Etape 1</h3>
-      <input type="text" name="nom" placeholder="Nom de l'application" />
-      <input type="file" name="logo" placeholder="Logo" />
-      <input type="text" name="serveurs" placeholder="Serveurs" />
-      <input type="text" name="utilisateur" placeholder="Utilisateur" />
-      <input type="submit" id="submit-btn" name="submit" class="submit action-button" value="Soumettre" />
-    </fieldset>
-    <fieldset>
-      <h2 class="fs-title">Félicitation!</h2>
-      <h3 class="fs-subtitle">Étape finale</h3>
-    </fieldset>
-  </form>
+<form id="msform">
+  <ul id="progressbar">
+    <li class="active">Ajouter une application</li>
+    <li>Félicitation</li>
+  </ul>
+  <fieldset>
+    <h2 class="fs-title">Ajouter une application</h2>
+    <h3 class="fs-subtitle">Étape 1</h3>
+    <input type="text" name="nom" placeholder="Nom de l'application" />
+    <input type="file" name="logo" placeholder="Logo" />
+    <input type="text" name="serveurs" placeholder="Serveurs" />
+    <input type="text" name="utilisateur" placeholder="Utilisateur" />
+    <input type="button" name="next" class="next action-button" value="Soumettre" />
+  </fieldset>
+  <fieldset>
+    <h1 class="fs-title">Félicitation!</h1>
+    <h3 class="fs-subtitle">Étape 2</h3>
+    <input type="button" name="previous" class="previous action-button" value="🔙" />
+    <a href="/index.html"></a><input type="submit" name="menu" class="return" value="menu" /></a>
+  </fieldset>
+</form>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-  <script src="./script.js"></script>
-  
-  <style>
-    @import url(https://fonts.googleapis.com/css?family=Montserrat);
+  <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
+<script  src="./script.js"></script>
 
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      height: 100%;
-      background: linear-gradient(
-        rgba(196, 102, 0, 0.6),
-        rgba(155, 89, 182, 0.6)
-      );
-    }
-
-    body {
-      font-family: montserrat, arial, verdana;
-    }
-
-    #msform {
-      width: 400px;
-      margin: 50px auto;
-      text-align: center;
-      position: relative;
-    }
-
-    #msform fieldset {
-      background: white;
-      border: 0 none;
-      border-radius: 3px;
-      box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-      padding: 20px 30px;
-      box-sizing: border-box;
-      width: 80%;
-      margin: 0 10%;
-
-      position: relative;
-    }
-
-    #msform fieldset:not(:first-of-type) {
-      display: none;
-    }
-
-    #msform input,
-    #msform textarea {
-      padding: 15px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      margin-bottom: 10px;
-      width: 100%;
-      box-sizing: border-box;
-      font-family: montserrat;
-      color: #2c3e50;
-      font-size: 13px;
-    }
-
-    #msform .action-button {
-      width: 100px;
-      background: #27ae60;
-      font-weight: bold;
-      color: white;
-      border: 0 none;
-      border-radius: 1px;
-      cursor: pointer;
-      padding: 10px;
-      margin: 10px 5px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    #msform .action-button:hover,
-    #msform .action-button:focus {
-      box-shadow: 0 0 0 2px white, 0 0 0 3px #27ae60;
-    }
-
-    .fs-title {
-      font-size: 15px;
-      text-transform: uppercase;
-      color: #2c3e50;
-      margin-bottom: 10px;
-    }
-
-    .fs-subtitle {
-      font-weight: normal;
-      font-size: 13px;
-      color: #666;
-      margin-bottom: 20px;
-    }
-
-    #progressbar {
-      margin-bottom: 30px;
-      overflow: hidden;
-      counter-reset: step;
-      display: flex;
-      justify-content: center; 
-    }
-
-    #progressbar li {
-      list-style-type: none;
-      color: white;
-      text-transform: uppercase;
-      font-size: 9px;
-      width: 33.33%;
-      float: none; 
-      position: relative;
-    }
-
-    #progressbar li:before {
-      content: counter(step);
-      counter-increment: step;
-      width: 20px;
-      line-height: 20px;
-      display: block;
-      font-size: 10px;
-      color: #333;
-      background: white;
-      border-radius: 3px;
-      margin: 0 auto 5px auto;
-    }
-
-    #progressbar li:after {
-      content: "";
-      width: 100%;
-      height: 2px;
-      background: white;
-      position: absolute;
-      left: -50%;
-      top: 9px;
-      z-index: -1; 
-    }
-
-    #progressbar li:first-child:after {
-      content: none; 
-    }
-
-    #progressbar li.active:before,
-    #progressbar li.active:after {
-      background: #27ae60;
-      color: white;
-    }
-
-    #msform .fs-title,
-    #msform .fs-subtitle {
-      text-align: left;
-    }
-
-    #msform .previous {
-      background-color: #bbb;
-    }
-
-    #msform .submit {
-      background-color: #27ae60;
-    }
-
-    #msform .submit:hover {
-      background-color: #2c3e50;
-    }
-
-    #msform .previous:hover {
-      background-color: #aaa;
-    }
-  </style>
 </body>
 </html>
