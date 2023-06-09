@@ -6,7 +6,7 @@
 </head>
 <body>
   <h2> Ajout d'un service</h2>
-    <form method="post" action="/traitement-ajout-application">
+    <form method="post" action="/traitement-ajout-service">
         {% csrf_token %}
         {{ form.as_ul }}
         <input type="submit" value="Ajouter"\>

@@ -19,9 +19,9 @@ def traitement_ajout_Application(request):
     form = applicationsForm(request.POST)
     if form.is_valid():
         application = form.save()
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"application" : application})
+        return render(request,"administration/Application/traitement-ajout.html",{"application" : application})
     else:
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"form": form})
+        return render(request,"administration/Application/ajout.html",{"form": form})
 
 def update_Application(request, id):
     application = models.applications.objects.get(pk=id)
@@ -31,7 +31,7 @@ def update_Application(request, id):
         'serveur': application.serveur,
         'utilisateur': application.utilisateur,
     })
-    return render(request, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {"form": form, "id": id})
+    return render(request, "administration/Application/update.html", {"form": form, "id": id})
 
 def traitement_update_Application(request, id):
     form = applicationsForm(request.POST)
@@ -39,12 +39,12 @@ def traitement_update_Application(request, id):
         Application = form.save(commit=False)
         Application.id = id;
         Application.save()
-        return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        return HttpResponseRedirect("")
     else:
-        return render(request, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {"form": form, "id": id})
+        return render(request, "administration/Application/update.html", {"form": form, "id": id})
 
 def delete_Application(request, id):
     application=models.applications.objects.get(pk=id)
     application.delete()
-    return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXX")
+    return HttpResponseRedirect("")
 

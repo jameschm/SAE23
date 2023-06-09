@@ -9,20 +9,20 @@ def ajout_Serveurs(request):
         form = serveursForm(request)
         if form.is_valid():
             serveur = form.save()
-            return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"serveur" : serveur})
+            return render(request,"administration/Serveurs/traitement-ajout.html",{"serveur" : serveur})
         else:
-            return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"form": form})
+            return render(request,"administration/Serveurs/ajout.html",{"form": form})
     else :
         form = serveursForm()
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXX",{"form" : form})
+        return render(request,"administration/Serveurs/ajout.html",{"form" : form})
 
 def traitement_ajout_Serveurs(request):
     form = serveursForm(request.POST)
     if form.is_valid():
         serveur = form.save()
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"serveur" : serveur})
+        return render(request,"administration/Serveurs/traitement-ajout.html",{"serveur" : serveur})
     else:
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"form": form})
+        return render(request,"administration/Serveurs/ajout.html",{"form": form})
 
 def update_Serveurs(request, id):
     serveur = models.serveurs.objects.get(pk=id)
@@ -33,7 +33,7 @@ def update_Serveurs(request, id):
         'capacite_memoire': serveur.capacite_memoire,
         'capacite_stockage': serveur.capacite_stockage,
     })
-    return render(request, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {"form": form, "id": id})
+    return render(request, "administration/Serveurs/update.html", {"form": form, "id": id})
 
 def traitement_update_Serveurs(request, id):
     form = serveursForm(request.POST)
@@ -41,13 +41,13 @@ def traitement_update_Serveurs(request, id):
         serveur = form.save(commit=False)
         serveur.id = id;
         serveur.save()
-        return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        return HttpResponseRedirect("")
     else:
-        return render(request, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {"form": form, "id": id})
+        return render(request, "administration/Serveurs/update.html", {"form": form, "id": id})
 
 def delete_Serveurs(request, id):
     serveur=models.serveurs.objects.get(pk=id)
     serveur.delete()
-    return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXX")
+    return HttpResponseRedirect("")
 
 
