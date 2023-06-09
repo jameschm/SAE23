@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Serveur</title>
+</head>
+<body>
+  <h2> Ajout d'une application</h2>
+    <form method="post" action="/traitement-ajout-application">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Ajouter"\>
+    </form>
+</body>
+  <a href="">Retour à l'acceuil</a>
+</html>

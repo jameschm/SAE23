@@ -47,20 +47,18 @@ class servicesForm(ModelForm):
 
 class applicationsForm(ModelForm):
     class Meta:
-        model = models.services
-        fields = ('nom', 'logo', 'prenom', 'email', 'serveur', 'utilisateur')
+        model = models.applications
+        fields = ('nom', 'logo', 'serveur', 'utilisateur')
         labels = {
             'nom' : _('nom'),
             'logo' : _('logo'),
-            'prenom' : _('prenom') ,
-            'email' : _('email'),
             'serveur' : _('serveur'),
             'utilisateur' : _('utilisateur'),
     }
 
 class usage_ressourcesForm(ModelForm):
     class Meta:
-        model = models.services
+        model = models.usage_ressources
         fields = ('application', 'service')
         labels = {
             'application': _('application'),

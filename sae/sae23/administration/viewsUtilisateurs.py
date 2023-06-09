@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from .forms import utilisateursForm,
+from .forms import utilisateursForm
 from . import models
 from django.http import HttpResponseRedirect
 

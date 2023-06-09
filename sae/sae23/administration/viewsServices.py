@@ -9,22 +9,22 @@ def ajout_Services(request):
         form = servicesForm(request)
         if form.is_valid():
             service = form.save()
-            return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"service" : service})
+            return render(request,"administration/Services/traitement-ajout.html",{"service" : service})
         else:
-            return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"form": form})
+            return render(request,"administration/Services/ajout.html",{"form": form})
     else :
         form = servicesForm()
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXX",{"form" : form})
+        return render(request,"administration/Services/ajout.html",{"form" : form})
 
 def traitement_ajout_Services(request):
     form = servicesForm(request.POST)
     if form.is_valid():
         service = form.save()
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"service" : service})
+        return render(request,"administration/Service/traitement-ajout.html",{"service" : service})
     else:
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"form": form})
+        return render(request,"administration/Service/ajout.html",{"form": form})
 
-def update_Serveurs(request, id):
+def update_Services(request, id):
     service = models.services.objects.get(pk=id)
     form = servicesForm(initial={
         'nom': service.nom,
@@ -33,7 +33,7 @@ def update_Serveurs(request, id):
         'memoire_vive_necessaire': service.memoire_vive_necessaire,
         'serveur_lancement': service.serveur_lancement,
     })
-    return render(request, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {"form": form, "id": id})
+    return render(request, "administration/Services/update.html", {"form": form, "id": id})
 
 def traitement_update_Services(request, id):
     form = servicesForm(request.POST)
@@ -41,11 +41,11 @@ def traitement_update_Services(request, id):
         service = form.save(commit=False)
         service.id = id;
         service.save()
-        return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        return HttpResponseRedirect("")
     else:
-        return render(request, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {"form": form, "id": id})
+        return render(request, "administration/Services/update.html", {"form": form, "id": id})
 
 def delete_Services(request, id):
     service=models.services.objects.get(pk=id)
     service.delete()
-    return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXX")
+    return HttpResponseRedirect("")
