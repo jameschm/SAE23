@@ -6,7 +6,7 @@
 </head>
 <body>
   <h2> Ajout d'une application</h2>
-    <form method="post" action="/traitement-ajout-application/">
+    <form method="post" action="/traitement-ajout-application/" enctype="multipart/form-data" >
         {% csrf_token %}
         {{ form.as_ul }}
 
