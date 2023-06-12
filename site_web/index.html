@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SAE32 - Accueil</title>
-  <link rel="stylesheet" type="text/css" href="stylea.css">
+  <title>SAE23 - Accueil</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css”>
+  <h1 class="title">SAE23</h1>
+
 </head>
 <body>
   <div id="background"></div>
-  <div class="content">
-    <a href="formulaire.html" class="redirect-button">+</a>
-    <a href="table.html" class="redirect-button">Table</a>
-    <h1 class="title">SAE32</h1>
+  <div class="login">
+    <a href="index.html" class="redirect-button">LOGIN</a>
   </div>
+  
+  <div class="content">
+    <a href="table.html" class="redirect-button">Table</a>
+  </div>
+  <div class="share">
+    <ol>
+      <li><a href="app.html"><i class="fab app"></i>Ajouter une application</a></li>
+      <li><a href="serv.html"><i class="fab serve"></i>Ajouter un serveur</a></li>
+      <li><a href="service.html"><i class="fab servi"></i>Ajouter un service</a></li>
+    </ol>
+    <div class="toggle"></div>
+  </div>
+  <link rel=”stylesheet” href=”https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css”>
+  <script>
+    const toggle = document.querySelector('.toggle');
+
+    toggle.addEventListener('click', () => {
+      const shareBtn = document.querySelector('.share');
+      shareBtn.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>

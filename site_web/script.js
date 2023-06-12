@@ -95,3 +95,31 @@ $(document).ready(function() {
     nextStep.show();
   }
 });
+
+$(".return").click(function () {
+  window.location.href = "/index.html";
+});
+
+$(document).ready(function() {
+  // Empêcher le comportement de soumission du formulaire par défaut
+  $("#msform").return(function(event) {
+    event.preventDefault();
+
+    // Progression vers l'étape suivante
+    nextStep();
+  });
+
+  // Fonction pour passer à l'étape suivante
+  function nextStep() {
+    var currentStep = $("#msform fieldset:visible");
+    var nextStep = currentStep.next();
+
+    // Mettre à jour la barre de progression
+    $("#progressbar li").eq($("fieldset").index(nextStep)).addClass("active");
+
+    // Afficher l'étape suivante et masquer l'étape actuelle
+    currentStep.hide();
+    nextStep.show();
+  }
+});
+
