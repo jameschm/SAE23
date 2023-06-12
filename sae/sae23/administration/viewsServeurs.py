@@ -4,6 +4,11 @@ from .forms import serveursForm, types_serveursForm
 from . import models
 from django.http import HttpResponseRedirect
 
+
+def affiche(request):
+    base = list(models.serveurs.objects.all())
+    return render(request, "administration/serveurs/affiche.html", {"base": base})
+
 def ajout_Serveurs(request):
     if request.method == "POST":
         form = serveursForm(request)
@@ -41,13 +46,13 @@ def traitement_update_Serveurs(request, id):
         serveur = form.save(commit=False)
         serveur.id = id;
         serveur.save()
-        return HttpResponseRedirect("")
+        return HttpResponseRedirect("/")
     else:
         return render(request, "administration/Serveurs/update.html", {"form": form, "id": id})
 
 def delete_Serveurs(request, id):
     serveur=models.serveurs.objects.get(pk=id)
     serveur.delete()
-    return HttpResponseRedirect("")
+    return HttpResponseRedirect("/")
 
 

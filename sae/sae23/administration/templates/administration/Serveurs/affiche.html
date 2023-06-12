@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2> Les serveurs</h2>
+<a href="/ajout-serveur/">Ajouter un serveur</a> <a href="/">Retour à l'acceuil</a>
+<article>
+    {% for serv in base %}
+        <div>
+            <p> Le serveur numéro {{serv.id}} est le serveur {{serv.nom}}. C'est un serveur {{serv.types_serveurs}} ayant {{serv.nombre_processeur}} processeur, {{serv.capacite_memoire}} de capacité mémoire et {{serv.capacite_stockage}} de capacité de stockage</p>
+            <a href="/update-serveur/{{t.id}}">Mettre à jour</a><a href="/delete-serveur/{{t.id}}">Supprimer</a>
+        </div>
+    {% endfor %}
+</article>
+</body>
+
+
+</html>

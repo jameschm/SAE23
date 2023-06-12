@@ -6,11 +6,11 @@
 </head>
 <body>
 <h2> Modification service</h2>
-    <form method="post" action="/update-service/{{id}}/">
+    <form method="post" action="/traitement-update-service/{{id}}/">
         {% csrf_token %}
         {{form.as_ul}}
         <input type="submit" value="Modifier"\>
     </form>
 </body>
-<a href="">Retour à l'acceuil</a>
+<a href="/">Retour à l'acceuil</a>
 </html>

@@ -31,7 +31,7 @@ def update_Utilisateurs(request, id):
         'prenom': utilisateur.prenom,
         'email': utilisateur.email
     })
-    return render(request, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {"form": form, "id": id})
+    return render(request, "administration/Utilisateurs/update.html", {"form": form, "id": id})
 
 def traitement_update_Utilisateurs(request, id):
     form = utilisateursForm(request.POST)
@@ -39,16 +39,16 @@ def traitement_update_Utilisateurs(request, id):
         utilisateur = form.save(commit=False)
         utilisateur.id = id;
         utilisateur.save()
-        return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        return HttpResponseRedirect("/")
     else:
-        return render(request, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {"form": form, "id": id})
+        return render(request, "administration/utilisateurs/update.html", {"form": form, "id": id})
 
 def delete_Utilisateurs(request, id):
     utilisateur=models.utilisateurs.objects.get(pk=id)
     utilisateur.delete()
-    return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXX")
+    return HttpResponseRedirect("/")
 
 def affiche(request):
-    base = list(models.applications.objects.all()) # méthode pour récupérer les données dans la base avec un id donnée
+    base = list(models.utilisateurs.objects.all()) # méthode pour récupérer les données dans la base avec un id donnée
     return render(request,"administration/utilisateurs/affiche.html",{"base": base})
 

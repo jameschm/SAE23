@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Type de serveur</title>
+</head>
+<body>
+<h2> Nos type de serveur</h2>
+<a href="/">Retour à l'acceuil</a>
+<article>
+    {% for t in base %}
+        <div>
+          <p>Le type de serveur numéro {{t.id}} sont les serveurs {{t.type}} </p>
+            <a href="/update-type-serveur/{{t.id}}">Mettre à jour</a><a href="/delete-type-serveur/{{t.id}}">Supprimer</a>
+        </div>
+    {% endfor %}
+</article>
+</body>
+</html>

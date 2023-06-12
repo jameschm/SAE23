@@ -5,9 +5,8 @@
     <title>Update</title>
 </head>
 <body>
-<h2> Modification du serveur</h2>
-    <form method="post" action="/traitement-update-serveur/{{id}}/">
-        {% csrf_token %}
+<h2> Modification service</h2>
+    <form method="post" action="/traitement-update-utilisateur/{{id}}/"
         {{form.as_ul}}
         <input type="submit" value="Modifier"\>
     </form>

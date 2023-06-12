@@ -16,6 +16,10 @@ def ajout_TypesServeurs(request):
         form = types_serveursForm()
         return render(request,"administration/TypesServeurs/ajout.html",{"form" : form})
 
+def affiche(request):
+    base = list(models.types_serveurs.objects.all())
+    return render(request, "administration/TypesServeurs/affiche.html", {"base": base})
+
 def traitement_ajout_TypesServeurs(request):
     form = types_serveursForm(request.POST)
     if form.is_valid():
@@ -30,7 +34,7 @@ def update_TypesServeurs(request, id):
         'type': typeserveur.type,
         'description': typeserveur.description,
     })
-    return render(request, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {"form": form, "id": id})
+    return render(request, "administration/TypesServeurs/update.html", {"form": form, "id": id})
 
 def traitement_update_TypesServeurs(request, id):
     form = types_serveursForm(request.POST)
@@ -38,11 +42,11 @@ def traitement_update_TypesServeurs(request, id):
         typeserveur = form.save(commit=False)
         typeserveur.id = id;
         typeserveur.save()
-        return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX")
+        return HttpResponseRedirect("/")
     else:
-        return render(request, "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", {"form": form, "id": id})
+        return render(request, "administration/TypesServeurs/update.html", {"form": form, "id": id})
 
 def delete_TypesServeurs(request, id):
     typeserveur=models.types_serveurs.objects.get(pk=id)
     typeserveur.delete()
-    return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXX")
+    return HttpResponseRedirect("/")

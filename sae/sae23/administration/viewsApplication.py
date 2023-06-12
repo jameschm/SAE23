@@ -51,7 +51,7 @@ def traitement_update_Application(request, id):
         Application = form.save(commit=False)
         Application.id = id;
         Application.save()
-        return HttpResponseRedirect("")
+        return HttpResponseRedirect("/")
     else:
         return render(request, "administration/Application/update.html", {"form": form, "id": id})
 
@@ -61,10 +61,17 @@ def delete_Application(request, id):
     return HttpResponseRedirect("/")
 
 def test(request):
-    base = list(models.services.objects.all())
-    y=0
+
+
+    y = 0
+    x = 0
+    base = list(models.services.objects.filter(serveur_lancement=1))
     for i in base:
         y += i.memoire_vive_necessaire
+        x += i.espace_memoire_utilise
+
+
+
     return HttpResponse(y)
 
 
@@ -78,7 +85,6 @@ def upload_file(request):
             with open(save_path, 'wb') as destination:
                 for chunk in uploaded_file.chunks():
                     destination.write(chunk)
-
             nom = str(charger_txt("administration/media/temp/temp.txt", 0))
             serveur_id = int(charger_txt("administration/media/temp/temp.txt", 1))
             utilisateur_id = int(charger_txt("administration/media/temp/temp.txt", 2))
@@ -91,7 +97,6 @@ def upload_file(request):
             return render(request, "administration/Application/traitement-ajout.html", {"application": application})
         else:
             return render(request, "administration/Application/erreur.html")
-
     return render(request, "administration/Application/ajout2.html")
 
 

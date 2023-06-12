@@ -2,73 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Utilisateur</title>
 </head>
 <body>
-<h2> Nos étudiants</h2>
-<p class="c"><a class="b" href="/universite/ajout-etudiant">Ajouter un étudiant</a> <a class="b" href="/">Retour à l'acceuil</a></p>
+<h2> Nos Utilisateurs</h2>
+<a href="/ajout-utilisateur">Ajouter un utilisateur</a> <a href="/">Retour à l'acceuil</a>
 <article>
     {% for t in base %}
         <div>
-            <p class="d">{{t.nom}}. {{t.logo}} {{t.serveur}} {{t.utilisateur}} <img src="/static/administration/defaut.png" </p>
-
-
+            <p> l'utilisateur numéro {{t.id}} s'appelle {{t.nom}} {{t.prenom}} et son mail est : {{t.email}} </p>
+            <a href="/update-utilisateur/{{t.id}}">Mettre à jour</a><a href="/delete-utilisateur/{{t.id}}">Supprimer</a>
         </div>
     {% endfor %}
 </article>
 </body>
-
-<style>
-    article{
-      display: flex;
-    }
-    h2 {
-      background-color: #d3bfa1;
-      text-align: center;
-      padding-top:15px;
-      padding-bottom:15px;
-      margin-top:5px;
-    }
-    div {
-      background-color: beige;
-      padding: 20px;
-      width: 135px;
-      margin-top:15px;
-      margin-right:15px;
-      margin-bottom: 20px;
-      padding-top: 10px;
-    }
-
-    .d{
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .a{
-      display: inline-block;
-      background-color: #8a623b;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      font-size: 16px;
-    }
-    .b{
-      color:black;
-      text-align: center;
-      width: 100%;
-      text-decoration: none;
-      font-size:20px;
-      margin-right: 12px;
-      background-color: #d3bfa1;
-      padding: 20px;
-    }
-    .c{
-      display: inline-block;
-      text-align: center;
-      width: 100%;
-      margin-bottom: 20px;
-      padding-top: 10px;
-    }
-</style>
-
 </html>

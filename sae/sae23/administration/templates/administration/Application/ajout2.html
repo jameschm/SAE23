@@ -4,6 +4,7 @@
     <title>Upload de fichier</title>
 </head>
 <body>
+    <h1>Ajout application avec un fichier: (fichier txt avec nom:1ère ligne, id serveur de lancement 2ème ligne et id de l'utilisateur 3ème ligne</h1>
     <form action="/upload/" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" name="fileToUpload" accept=".txt">

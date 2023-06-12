@@ -5,7 +5,7 @@
     <title>Update</title>
 </head>
 <body>
-<h2> Modification application</h2>
+<h2> Modification d'application</h2>
     <form method="post" action="/update-application/{{id}}/">
         {% csrf_token %}
         {{form.as_ul}}

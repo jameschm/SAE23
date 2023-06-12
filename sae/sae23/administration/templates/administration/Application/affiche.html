@@ -6,69 +6,14 @@
 </head>
 <body>
 <h2> Les applications</h2>
-<a class="b" href="/choix-ajout">Ajouter un étudiant</a> <a class="b" href="/">Retour à l'acceuil</a>
+<a href="/choix-ajout">Ajouter une application</a> <a href="/">Retour à l'acceuil</a>
 <article>
     {% for application in base %}
         <div>
-            <p class="d">nom: {{application.nom}} logo: <img src="{{application.logo.url}}"> utilisateur: {{application.utilisateur}} serveur : {{application.serveur}}</p>
-
-
+            <p >nom: {{application.nom}} logo: <img src="{{application.logo.url}}"> utilisateur: {{application.utilisateur}} serveur : {{application.serveur}}</p>
+        <a href="/update-application/{{t.id}}">Mettre à jour</a><a href="/delete-application/{{t.id}}">Supprimer</a>
         </div>
     {% endfor %}
 </article>
 </body>
-
-<style>
-    article{
-      display: flex;
-    }
-    h2 {
-      background-color: #d3bfa1;
-      text-align: center;
-      padding-top:15px;
-      padding-bottom:15px;
-      margin-top:5px;
-    }
-    div {
-      background-color: beige;
-      padding: 20px;
-      width: 135px;
-      margin-top:15px;
-      margin-right:15px;
-      margin-bottom: 20px;
-      padding-top: 10px;
-    }
-
-    .d{
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .a{
-      display: inline-block;
-      background-color: #8a623b;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      font-size: 16px;
-    }
-    .b{
-      color:black;
-      text-align: center;
-      width: 100%;
-      text-decoration: none;
-      font-size:20px;
-      margin-right: 12px;
-      background-color: #d3bfa1;
-      padding: 20px;
-    }
-    .c{
-      display: inline-block;
-      text-align: center;
-      width: 100%;
-      margin-bottom: 20px;
-      padding-top: 10px;
-    }
-</style>
-
 </html>
