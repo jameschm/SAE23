@@ -6,14 +6,14 @@ from django.db import models
 
 class serveurs (models.Model):
     nom = models.CharField(max_length=100)
-    type_serveur = models.ForeignKey("types_serveurs", on_delete=models.CASCADE, default=None)
+    types_serveurs = models.ForeignKey("types_serveurs", on_delete=models.CASCADE, default=None)
     nombre_processeur =  models.IntegerField(null = False, blank= False)
     capacite_memoire =  models.IntegerField(null = False, blank= False)
     capacite_stockage =  models.IntegerField(null = False, blank= False)
 
 
     def __str__(self):
-        chaine = f"Le serveur {self.nom} (type: {self.type}) a une capacité mémoire de {self.capacite_memoire}, une capacité de stockage de {self.capacite_stockage} et il utilise {self.nombre_processeur} processeur"
+        chaine = f"{self.nom}"
         return chaine
 
 class types_serveurs (models.Model):
@@ -21,7 +21,7 @@ class types_serveurs (models.Model):
     description = models.TextField(null=True, blank=True)
 
     def __str__(self):
-        chaine = f""
+        chaine = f"{self.type}"
         return chaine
 
 class utilisateurs (models.Model):
@@ -30,7 +30,7 @@ class utilisateurs (models.Model):
     email = models.EmailField(max_length=100)
 
     def __str__(self):
-        chaine = f""
+        chaine = f"{self.nom}"
         return chaine
 
 class services (models.Model):
@@ -46,7 +46,7 @@ class services (models.Model):
 
 class applications (models.Model):
     nom = models.CharField(max_length=100)
-    logo = models.ImageField(upload_to='images/')
+    logo = models.ImageField(upload_to='media/temp/administration/logo', default="media/temp/administration/defaut.png", null=True)
     serveur = models.ForeignKey("serveurs", on_delete=models.CASCADE, default=None)
     utilisateur = models.ForeignKey("utilisateurs", on_delete=models.CASCADE, default=None)
 

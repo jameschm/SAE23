@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload de fichier</title>
+</head>
+<body>
+    <form action="/upload/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="fileToUpload" accept=".txt">
+        <input type="submit" value="Envoyer">
+    </form>
+
+</body>
+</html>

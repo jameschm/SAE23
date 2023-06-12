@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Serveur</title>
+    <title>Utilisateur</title>
 </head>
 <body>
   <h2> Ajout d'un service</h2>
-    <form method="post" action="/traitement-ajout-service">
+    <form method="post" action="/traitement-ajout-util/">
         {% csrf_token %}
         {{ form.as_ul }}
         <input type="submit" value="Ajouter"\>

@@ -9,20 +9,20 @@ def ajout_TypesServeurs(request):
         form = types_serveursForm(request)
         if form.is_valid():
             typeserveur = form.save()
-            return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"typeserveur" : typeserveur})
+            return render(request,"administration/TypesServeurs/traitement-ajout.html",{"typeserveur" : typeserveur})
         else:
-            return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"form": form})
+            return render(request,"administration/TypesServeurs/ajout.html",{"form": form})
     else :
         form = types_serveursForm()
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXX",{"form" : form})
+        return render(request,"administration/TypesServeurs/ajout.html",{"form" : form})
 
 def traitement_ajout_TypesServeurs(request):
     form = types_serveursForm(request.POST)
     if form.is_valid():
         typesserveur = form.save()
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"typesserveur" : typesserveur})
+        return render(request,"administration/TypesServeurs/traitement-ajout.html",{"typesserveur" : typesserveur})
     else:
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"form": form})
+        return render(request,"administration/TypesServeurs/ajout.html",{"form": form})
 
 def update_TypesServeurs(request, id):
     typeserveur = models.types_serveurs.objects.get(pk=id)

@@ -9,20 +9,20 @@ def ajout_Utilisateurs(request):
         form = utilisateursForm(request)
         if form.is_valid():
             utilisateur = form.save()
-            return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"utilisateur" : utilisateur})
+            return render(request,"administration/utilisateurs/traitement-ajout.html",{"utilisateur" : utilisateur})
         else:
-            return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"form": form})
+            return render(request,"administration/utilisateurs/ajout.html",{"form": form})
     else :
         form = utilisateursForm()
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXX",{"form" : form})
+        return render(request,"administration/utilisateurs/ajout.html",{"form" : form})
 
 def traitement_ajout_Utilisateurs(request):
     form = utilisateursForm(request.POST)
     if form.is_valid():
         utilisateur = form.save()
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"utilisateur" : utilisateur})
+        return render(request,"administration/utilisateurs/traitement-ajout.html",{"utilisateur" : utilisateur})
     else:
-        return render(request,"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",{"form": form})
+        return render(request,"administration/utilisateurs/ajout.html",{"form": form})
 
 def update_Utilisateurs(request, id):
     utilisateur = models.utilisateurs.objects.get(pk=id)
@@ -47,3 +47,8 @@ def delete_Utilisateurs(request, id):
     utilisateur=models.utilisateurs.objects.get(pk=id)
     utilisateur.delete()
     return HttpResponseRedirect("XXXXXXXXXXXXXXXXXXX")
+
+def affiche(request):
+    base = list(models.applications.objects.all()) # méthode pour récupérer les données dans la base avec un id donnée
+    return render(request,"administration/utilisateurs/affiche.html",{"base": base})
+
