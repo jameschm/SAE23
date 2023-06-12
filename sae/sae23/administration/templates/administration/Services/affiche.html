@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2> Nos étudiants</h2>
+<p class="c"><a class="b" href="/universite/ajout-etudiant">Ajouter un étudiant</a> <a class="b" href="/">Retour à l'acceuil</a></p>
+<article>
+    {% for t in base %}
+        <div>
+            <p class="d">{{t.nom}}. {{t.types_serveurs}} {{t.nombre_processeur}} {{t.capacite_memoire}} {{t.capacite_stockage}}
+
+
+        </div>
+    {% endfor %}
+</article>
+</body>
+
+<style>
+    article{
+      display: flex;
+    }
+    h2 {
+      background-color: #d3bfa1;
+      text-align: center;
+      padding-top:15px;
+      padding-bottom:15px;
+      margin-top:5px;
+    }
+    div {
+      background-color: beige;
+      padding: 20px;
+      width: 135px;
+      margin-top:15px;
+      margin-right:15px;
+      margin-bottom: 20px;
+      padding-top: 10px;
+    }
+
+    .d{
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .a{
+      display: inline-block;
+      background-color: #8a623b;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 16px;
+    }
+    .b{
+      color:black;
+      text-align: center;
+      width: 100%;
+      text-decoration: none;
+      font-size:20px;
+      margin-right: 12px;
+      background-color: #d3bfa1;
+      padding: 20px;
+    }
+    .c{
+      display: inline-block;
+      text-align: center;
+      width: 100%;
+      margin-bottom: 20px;
+      padding-top: 10px;
+    }
+</style>
+
+</html>

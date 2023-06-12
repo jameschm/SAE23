@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 from django.db import models
-
+from django.conf import settings
 
 class serveurs (models.Model):
     nom = models.CharField(max_length=100)
@@ -46,7 +46,7 @@ class services (models.Model):
 
 class applications (models.Model):
     nom = models.CharField(max_length=100)
-    logo = models.ImageField(upload_to='media/temp/administration/logo', default="media/temp/administration/defaut.png", null=True)
+    logo = models.ImageField(upload_to="logo/", default="logo/defaut.png", null=True)
     serveur = models.ForeignKey("serveurs", on_delete=models.CASCADE, default=None)
     utilisateur = models.ForeignKey("utilisateurs", on_delete=models.CASCADE, default=None)
 

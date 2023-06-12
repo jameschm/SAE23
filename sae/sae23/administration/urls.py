@@ -15,6 +15,7 @@ urlpatterns = [
     path('delete/<int:id>/',viewsApplication.delete_Application),
     path('upload/',viewsApplication.upload_file),
     path('choix-ajout/',viewsApplication.choix_ajout),
+    path('test/',viewsApplication.test),
 
 
     path('ajout-serveur/', viewsServeurs.ajout_Serveurs),
@@ -35,6 +36,7 @@ urlpatterns = [
 
     path('ajout-util/', viewsUtilisateurs.ajout_Utilisateurs),
     path('traitement-ajout-util/',viewsUtilisateurs.traitement_ajout_Utilisateurs),
-    path('affiche/',viewsUtilisateurs.affiche),
+    path('affiche-util/',viewsUtilisateurs.affiche),
+    path('affiche-service/',viewsServices.affiche),
 ]
 

@@ -28,7 +28,7 @@ def ajout_Application_fichier(request):
     return render(request, "administration/application/ajout2.html")
 
 def traitement_ajout_Application(request):
-    form = applicationsForm(request.POST)
+    form = applicationsForm(request.POST, request.FILES)
     if form.is_valid():
         application = form.save()
         return render(request,"administration/Application/traitement-ajout.html",{"application" : application})
@@ -60,8 +60,12 @@ def delete_Application(request, id):
     application.delete()
     return HttpResponseRedirect("/")
 
-
-
+def test(request):
+    base = list(models.services.objects.all())
+    y=0
+    for i in base:
+        y += i.memoire_vive_necessaire
+    return HttpResponse(y)
 
 
 
@@ -75,23 +79,22 @@ def upload_file(request):
                 for chunk in uploaded_file.chunks():
                     destination.write(chunk)
 
-            c=models.serveurs.objects.get(pk=int(charger_txt("administration/media/temp/temp.txt", 1)))
-            d=models.utilisateurs.objects.get(pk=int(charger_txt("administration/media/temp/temp.txt",2)))
-            form = applicationsForm(initial={
-                'nom': str(charger_txt("administration/media/temp/temp.txt", 0)),
+            nom = str(charger_txt("administration/media/temp/temp.txt", 0))
+            serveur_id = int(charger_txt("administration/media/temp/temp.txt", 1))
+            utilisateur_id = int(charger_txt("administration/media/temp/temp.txt", 2))
 
-                'serveur': c.id,
-                'utilisateur': d.id,
-            })
-            if form.is_valid():
-                application = form.save()
-                return render(request, "administration/Application/traitement-ajout.html", {"application": application})
-            else:
-                return HttpResponse(d.id)
+            # Récupérer les objets serveur et utilisateur correspondants
+            serveur = models.serveurs.objects.get(pk=serveur_id)
+            utilisateur = models.utilisateurs.objects.get(pk=utilisateur_id)
+            application = models.applications(nom=nom, serveur=serveur, utilisateur=utilisateur)
+            application.save()
+            return render(request, "administration/Application/traitement-ajout.html", {"application": application})
         else:
             return render(request, "administration/Application/erreur.html")
 
     return render(request, "administration/Application/ajout2.html")
+
+
 
 def is_txt_file(file_path):
         a=[]
