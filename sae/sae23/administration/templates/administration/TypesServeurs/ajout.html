@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Serveur</title>
+    <title>type serveur</title>
 </head>
 <body>
-  <h2> Ajout d'un serveur</h2>
-    <form method="post" action="/traitement-ajout-serveur/">
+  <h2> Ajout d'un type de serveur</h2>
+    <form method="post" action="/traitement-ajout-type/">
         {% csrf_token %}
         {{ form.as_ul }}
         <input type="submit" value="Ajouter"\>
     </form>
 </body>
-  <a href="">Retour à l'acceuil</a>
+  <a href="/">Retour à l'acceuil</a>
 </html>

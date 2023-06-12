@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .forms import applicationsForm
+from .forms import applicationsForm, serveursForm, utilisateursForm
 from . import models
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
+from django.conf import settings
+import os
 
 def ajout_Application(request):
     if request.method == "POST":
@@ -14,6 +16,16 @@ def ajout_Application(request):
     else :
         form = applicationsForm()
         return render(request,"administration/Application/ajout.html",{"form" : form})
+
+def affiche_application(request):
+    base = list(models.applications.objects.all())
+    return render(request, "administration/Application/affiche.html", {"base": base})
+
+def choix_ajout(request):
+    return render(request,"administration/Application/choix-ajout.html")
+
+def ajout_Application_fichier(request):
+    return render(request, "administration/application/ajout2.html")
 
 def traitement_ajout_Application(request):
     form = applicationsForm(request.POST)
@@ -46,5 +58,48 @@ def traitement_update_Application(request, id):
 def delete_Application(request, id):
     application=models.applications.objects.get(pk=id)
     application.delete()
-    return HttpResponseRedirect("")
+    return HttpResponseRedirect("/")
 
+
+
+
+
+
+def upload_file(request):
+    if request.method == 'POST':
+        uploaded_file = request.FILES['fileToUpload']
+        file_name = uploaded_file.name
+        if is_txt_file(file_name):
+            save_path = os.path.join(settings.MEDIA_ROOT, "temp.txt")
+            with open(save_path, 'wb') as destination:
+                for chunk in uploaded_file.chunks():
+                    destination.write(chunk)
+
+            c=models.serveurs.objects.get(pk=int(charger_txt("administration/media/temp/temp.txt", 1)))
+            d=models.utilisateurs.objects.get(pk=int(charger_txt("administration/media/temp/temp.txt",2)))
+            form = applicationsForm(initial={
+                'nom': str(charger_txt("administration/media/temp/temp.txt", 0)),
+
+                'serveur': c.id,
+                'utilisateur': d.id,
+            })
+            if form.is_valid():
+                application = form.save()
+                return render(request, "administration/Application/traitement-ajout.html", {"application": application})
+            else:
+                return HttpResponse(d.id)
+        else:
+            return render(request, "administration/Application/erreur.html")
+
+    return render(request, "administration/Application/ajout2.html")
+
+def is_txt_file(file_path):
+        a=[]
+        a=file_path.split('.')
+        return a[1] == 'txt'
+
+def charger_txt(file_path, x):
+    with open(file_path, 'r') as file:
+        lines = file.readlines()
+        data = [line.strip() for line in lines]
+        return data[x]

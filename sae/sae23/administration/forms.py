@@ -5,10 +5,10 @@ from . import models
 class serveursForm(ModelForm):
     class Meta:
         model = models.serveurs
-        fields = ('nom', 'type_serveur', 'nombre_processeur', 'capacite_memoire', 'capacite_stockage')
+        fields = ('nom', 'types_serveurs', 'nombre_processeur', 'capacite_memoire', 'capacite_stockage')
         labels = {
             'nom' : _('nom'),
-            'type_serveur' : _('type_serveur') ,
+            'types_serveurs' : _('types_serveurs') ,
             'nombre_processeur' : _('nombre_processeur'),
             'capacite_memoire' : _('capacite_memoire'),
             'capacite_stockage' : _('capacite_stockage'),
