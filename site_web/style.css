@@ -240,13 +240,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 15%;
+  border-radius: 30px;
   transition: all .3s;
   opacity: 0;
 }
 
 .share ol li a {
   color: black;
+  text-decoration: none;
 }
 
 .share.active ol li {
@@ -255,17 +256,17 @@ body {
 }
 .share.active ol li:nth-child(1) {
   transition-delay: .1s;
-  transform: translateY(-60px);
+  transform: translate(-150px, -60px);
 }
 
 .share.active ol li:nth-child(2) {
   transition-delay: .2s;
-  transform: translateY(-120px);
+  transform: translate(-150px,-120px);
 }
 
 .share.active ol li:nth-child(3) {
   transition-delay: .3s;
-  transform: translateY(-180px);
+  transform: translate(-150px,-180px);
 }
 
 .login .redirect-button{
