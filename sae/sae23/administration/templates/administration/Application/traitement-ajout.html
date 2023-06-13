@@ -1,11 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>ajout d'une application</title>
+  <meta charset="UTF-8">
+  <title>SAE23 | Application</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'administration/style.css' %}">
 </head>
 <body>
-    <h2>Ajout de l'application avec succès</h2>
+<form id="msform" method="post" action="/traitement-ajout-application/" enctype="multipart/form-data">
+  <fieldset>
+    <h2 class="fs-title">Ajout de l'application avec succès</h2>
+    <a href="/"><input type="button" name="previous" value="Retour à l'acceuil" /></a>
+  </fieldset>
+</form>
 </body>
-<footer><a href="/">Retour à l'acceuil</a></footer>
 </html>
