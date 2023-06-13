@@ -20,8 +20,6 @@ urlpatterns = [
 #APPLICATION SUPPRIMER
     path('delete-application/<int:id>/',viewsApplication.delete_Application),
 
-path('test/',viewsApplication.test),
-
 #SERVEUR AFFICHE
     path('affiche-serveur/', viewsServeurs.affiche),
 #SERVEUR AJOUT

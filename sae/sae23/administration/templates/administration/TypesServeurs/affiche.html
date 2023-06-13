@@ -1,19 +1,34 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Type de serveur</title>
+  <meta charset="UTF-8">
+  <title>SAE23 | Type de serveur</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'administration/style.css' %}">
 </head>
 <body>
-<h2> Nos type de serveur</h2>
-<a href="/">Retour à l'acceuil</a>
-<article>
-    {% for t in base %}
-        <div>
-          <p>Le type de serveur numéro {{t.id}} sont les serveurs {{t.type}} </p>
-            <a href="/update-type-serveur/{{t.id}}">Mettre à jour</a><a href="/delete-type-serveur/{{t.id}}">Supprimer</a>
-        </div>
-    {% endfor %}
-</article>
+<form id="msform" method="post" action="/traitement-ajout-application/" enctype="multipart/form-data">
+  <fieldset>
+    <h2 class="fs-title">Nos type de serveur</h2>
+    <a href="/ajout-type-serveur"><input type="button" name="previous" value="Ajouter un type de serveur" /></a> 
+    <a href="/"><input type="button" name="previous" value="Retour à l'acceuil" /></a>
+    <article>
+        {% for t in base %}
+            <div>
+                <p>############<br>
+                    
+                    <br>numero : {{t.id}} 
+                    <br>type: {{t.type}}<br><br>
+                    
+                </p>
+                <a href="/update-type-serveur/{{t.id}}"><input type="button" name="previous" class="previous action-button" value="Mettre à jour" /></a>
+                <a href="/delete-type-serveur/{{t.id}}"><input type="button" name="previous" class="previous action-button" value="Supprimer" /></a>
+            </div>
+        {% endfor %}
+    </article>
+  </fieldset>
+</form>
 </body>
 </html>

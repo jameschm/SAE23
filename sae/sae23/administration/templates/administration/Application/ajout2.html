@@ -1,15 +1,23 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <title>Upload de fichier</title>
+  <meta charset="UTF-8">
+  <title>SAE23 | Upload de fichier</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'administration/style.css' %}">
 </head>
 <body>
-    <h1>Ajout application avec un fichier: (fichier txt avec nom:1ère ligne, id serveur de lancement 2ème ligne et id de l'utilisateur 3ème ligne</h1>
-    <form action="/upload/" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="fileToUpload" accept=".txt">
-        <input type="submit" value="Envoyer">
-    </form>
-
+<form id="msform" method="post" action="/upload/" enctype="multipart/form-data">
+  {% csrf_token %}
+  <fieldset>
+    <h2 class="fs-title">Ajout application avec un fichier .TXT: <br><br> 1ère ligne: Nom <br><br>2ème ligne : id serveur de lancement <br><br>3ème ligne : id de l'utilisateur <br></h2>
+    <input type="file" name="fileToUpload" accept=".txt">
+    <a href="/affiche-application"><input type="button" name="previous" class="previous action-button" value="🔙" /></a></li>
+    <input type="submit" value="Envoyer"\>
+  </fieldset>
+</form>
 </body>
 </html>
+

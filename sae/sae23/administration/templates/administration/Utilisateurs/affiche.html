@@ -1,19 +1,35 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Utilisateur</title>
+  <meta charset="UTF-8">
+  <title>SAE23 | Utilisateur</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'administration/style.css' %}">
 </head>
 <body>
-<h2> Nos Utilisateurs</h2>
-<a href="/ajout-utilisateur">Ajouter un utilisateur</a> <a href="/">Retour à l'acceuil</a>
-<article>
-    {% for t in base %}
-        <div>
-            <p> l'utilisateur numéro {{t.id}} s'appelle {{t.nom}} {{t.prenom}} et son mail est : {{t.email}} </p>
-            <a href="/update-utilisateur/{{t.id}}">Mettre à jour</a><a href="/delete-utilisateur/{{t.id}}">Supprimer</a>
-        </div>
-    {% endfor %}
-</article>
+<form id="msform" method="post" action="/traitement-ajout-application/" enctype="multipart/form-data">
+  <fieldset>
+    <h2 class="fs-title">Nos Utilisateurs</h2>
+    <a href="/ajout-utilisateur"><input type="button" name="previous" value="Ajouter un utilisateur" /></a> 
+    <a href="/"><input type="button" name="previous" value="Retour à l'acceuil" /></a>
+    <article>
+        {% for t in base %}
+            <div>
+                <p>############<br>
+                    
+                    <br>numero : {{t.id}} 
+                    <br>nom: {{t.nom}} 
+                    <br>prenom:{{t.prenom}} 
+                    <br>main: {{t.email}}<br><br>
+                </p>
+                <a href="/update-utilisateur/{{t.id}}"><input type="button" name="previous" class="previous action-button" value="Mettre à jour" /></a>
+                <a href="/delete-utilisateur/{{t.id}}"><input type="button" name="previous" class="previous action-button" value="Supprimer" /></a>
+            </div>
+        {% endfor %}
+    </article>
+  </fieldset>
+</form>
 </body>
 </html>

@@ -1,13 +1,21 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>AJOUT APPLICATION</title>
+  <meta charset="UTF-8">
+  <title>SAE23 | Application</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'administration/style.css' %}">
 </head>
 <body>
-    <h1>Choix de la méthode de l'ajout</h1>
-
-<a href="/ajout-application/">Ajout avec un formulaire</a> <a href="/ajout-application-fichier/">Ajout avec un fichier txt</a>
-<a href="/">Retour à l'acceuil</a>
+<form id="msform" method="post" action="/traitement-ajout-application/" enctype="multipart/form-data">
+  <fieldset>
+    <h2 class="fs-title">AJOUT APPLICATION</h2>
+    <a href="/ajout-application/"><input type="button" name="previous" value="Ajout avec un formulaire" /></a> 
+    <a href="/ajout-application-fichier/"><input type="button" name="previous" value="Ajout avec un fichier txt" /></a>
+    <a href="/"><input type="button" name="previous" value="Retour à l'acceuil" /></a>
+  </fieldset>
+</form>
 </body>
 </html>
