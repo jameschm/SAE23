@@ -60,21 +60,6 @@ def delete_Application(request, id):
     application.delete()
     return HttpResponseRedirect("/")
 
-def test(request):
-
-
-    y = 0
-    x = 0
-    base = list(models.services.objects.filter(serveur_lancement=2))
-    for i in base:
-        y += i.memoire_vive_necessaire
-        x += i.espace_memoire_utilise
-
-
-
-    return HttpResponse(y)
-
-
 
 def upload_file(request):
     if request.method == 'POST':
