@@ -33,7 +33,7 @@ def update_Serveurs(request, id):
     serveur = models.serveurs.objects.get(pk=id)
     form = serveursForm(initial={
         'nom': serveur.nom,
-        'type_serveur': serveur.type_serveur,
+        'type_serveur': serveur.types_serveurs,
         'nombre_processeur': serveur.nombre_processeur,
         'capacite_memoire': serveur.capacite_memoire,
         'capacite_stockage': serveur.capacite_stockage,
