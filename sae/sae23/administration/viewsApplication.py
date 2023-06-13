@@ -84,8 +84,6 @@ def upload_file(request):
             return render(request, "administration/Application/erreur.html")
     return render(request, "administration/Application/ajout2.html")
 
-
-
 def is_txt_file(file_path):
         a=[]
         a=file_path.split('.')
