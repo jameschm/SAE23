@@ -1,13 +1,20 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>ajout d'un serveur</title>
+  <meta charset="UTF-8">
+  <title>SAE23 | Serveur</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'administration/style.css' %}">
 </head>
 <body>
-    <h2>Ajout du serveur avec succès</h2>
+<form id="msform" method="post" action="/traitement-ajout-application/" enctype="multipart/form-data">
+  <fieldset>
+    <h2 class="fs-title">Ajout du serveur avec succès</h2>
+    <a href="/affiche-serveur"><input type="button" name="previous" class="previous action-button" value="🔙" /></a></li>
+    <a href="/"><input type="button" name="previous" value="Retour à l'acceuil" /></a>
+  </fieldset>
+</form>
 </body>
-<footer>
-    <a href="/">Retour à l'acceuil</a>
-</footer>
 </html>

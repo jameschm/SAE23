@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Update</title>
-</head>
-<body>
-<h2> Modification d'application</h2>
-    <form method="post" action="/update-application/{{id}}/">
-        {% csrf_token %}
-        {{form.as_ul}}
-        <input type="submit" value="Modifier"\>
-    </form>
-</body>
-<a href="/">Retour à l'acceuil</a>
-</html>
-
 {% load static %}
 
 <!DOCTYPE html>
