@@ -11,7 +11,7 @@
     {% for serv in base %}
         <div>
             <p> Le serveur numéro {{serv.id}} est le serveur {{serv.nom}}. C'est un serveur {{serv.types_serveurs}} ayant {{serv.nombre_processeur}} processeur, {{serv.capacite_memoire}} de capacité mémoire et {{serv.capacite_stockage}} de capacité de stockage</p>
-            <a href="/update-serveur/{{t.id}}">Mettre à jour</a><a href="/delete-serveur/{{t.id}}">Supprimer</a>
+            <a href="/update-serveur/{{serv.id}}">Mettre à jour</a><a href="/delete-serveur/{{serv.id}}">Supprimer</a><a href="/detail-serveur/{{serv.id}}">Détails</a>
         </div>
     {% endfor %}
 </article>

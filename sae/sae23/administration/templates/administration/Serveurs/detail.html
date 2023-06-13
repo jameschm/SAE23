@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Services</title>
+</head>
+<body>
+<h2> Le serveur propose ces services</h2>
+<p> <a href="/administration/media/temp/administration/test.txt" download="test.txt">Télécharger la fiche du serveur</a><a href="/ajout-service/">Ajout d'un service</a> <a href="/">Retour à l'acceuil</a></p>
+<article>
+    {% for t in base %}
+        <div>
+            <p>Le service numéro {{t.id}} ce nommant {{t.nom}} est lancé sur le serveur {{t.serveur_lancement}} depuis le {{t.date_lancement|date:"d/m/Y" }}. Il a besoin de {{t.espace_memoire_utilise}} de mémoire de stockage et de {{t.memoire_vive_necessaire}} de mémoire vive. </p>
+            <a href="/update-service/{{t.id}}">Mettre à jour</a><a href="/delete-service/{{t.id}}">Supprimer</a>
+        </div>
+    {% endfor %}
+</article>
+</body>
+
+
+</html>

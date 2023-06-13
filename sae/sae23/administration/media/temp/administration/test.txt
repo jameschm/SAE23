@@ -1,0 +1,7 @@
+Voici la fiche du serveur koc:
+
+Liste des services:
+
+14. Le service koc a été lancer le 1111-11-11. Il utilise 0 d'espace mémoire et 0 de mémoire vive.
+
+16. Le service tettststtt a été lancer le 1010-10-10. Il utilise 50 d'espace mémoire et 2 de mémoire vive.

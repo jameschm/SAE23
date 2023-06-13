@@ -32,6 +32,9 @@ path('test/',viewsApplication.test),
     path('traitement-update-serveur/<int:id>/', viewsServeurs.traitement_update_Serveurs),
 #SERVEUR SUPPRIMER
     path('delete-serveur/<int:id>/',viewsServeurs.delete_Serveurs),
+#SERVEUR DETAIL
+    path('detail-serveur/<int:id>/',viewsServeurs.detail),
+
 
 #SERVICE AFFICHE
     path('affiche-service/', viewsServices.affiche),

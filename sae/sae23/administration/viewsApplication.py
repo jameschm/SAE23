@@ -65,7 +65,7 @@ def test(request):
 
     y = 0
     x = 0
-    base = list(models.services.objects.filter(serveur_lancement=1))
+    base = list(models.services.objects.filter(serveur_lancement=2))
     for i in base:
         y += i.memoire_vive_necessaire
         x += i.espace_memoire_utilise
