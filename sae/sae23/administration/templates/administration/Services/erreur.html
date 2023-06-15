@@ -1,11 +1,20 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>SAE23 | Service</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'administration/style.css' %}">
 </head>
 <body>
-      <p>PAS ASSEZ DE MEMOIRE VIVE OU DE STOCKAGE</p>
-      <a href="/">Retour à l'acceuil</a>
+<form id="msform" method="post" action="/traitement-ajout-service/" enctype="multipart/form-data">
+  <fieldset>
+    <h2 class="fs-title">PAS ASSEZ OU TROP DE MEMOIRE VIVE OU DE STOCKAGE</h2>
+    <a href="/affiche-service"><input type="button" name="previous" value="retour service" /></a> 
+    <a href="/"><input type="button" name="previous" value="Retour à l'acceuil" /></a>
+  </fieldset>
+</form>
 </body>
 </html>

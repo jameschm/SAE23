@@ -74,6 +74,13 @@ body {
   box-shadow: 0 0 0 2px white, 0 0 0 3px #27ae60;
 }
 
+.fs-title1 {
+  font-size: 20px;
+  text-transform: uppercase;
+  color: #21262b;
+  margin-bottom: 10px;
+}
+
 .fs-title {
   font-size: 15px;
   text-transform: uppercase;
