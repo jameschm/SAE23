@@ -1,16 +1,22 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Update</title>
+  <meta charset="UTF-8">
+  <title>SAE23 | Serveur</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'administration/style.css' %}">
 </head>
 <body>
-<h2> Modification du serveur</h2>
-    <form method="post" action="/traitement-update-serveur/{{id}}/">
-        {% csrf_token %}
-        {{form.as_ul}}
-        <input type="submit" value="Modifier"\>
-    </form>
+<form id="msform" method="post" action="/traitement-update-serveur/{{id}}/">
+  {% csrf_token %}
+  <fieldset>
+    <h2 class="fs-title">Modification du serveur</h2>
+    {{ form.as_ul }}
+    <a href="/affiche-serveur"><input type="button" name="previous" class="previous action-button" value="🔙" /></a></li>
+    <input type="submit" value="Modifier"\>
+  </fieldset>
+</form>
 </body>
-<a href="/">Retour à l'acceuil</a>
 </html>
