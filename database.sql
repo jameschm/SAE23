@@ -1,65 +1,70 @@
-ALTER TABLE serveurs
-DROP FOREIGN KEY serveurs_ibfk_1;
+USE sae;
 
-DROP TABLE IF EXISTS types_serveurs;
-
-CREATE TABLE types_serveurs (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  type VARCHAR(100),
-  description TEXT
-);
-
-ALTER TABLE serveurs
-ADD CONSTRAINT serveurs_ibfk_1 FOREIGN KEY (type_serveur_id) REFERENCES types_serveurs(id);
-
-
-DROP TABLE IF EXISTS serveurs;
-
-CREATE TABLE serveurs (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(100),
-  type_serveur_id INT,
-  nombre_processeur INT,
-  capacite_memoire INT,
-  capacite_stockage INT,
-  FOREIGN KEY (type_serveur_id) REFERENCES types_serveurs(id)
+CREATE TABLE administration_types_serveurs (
+  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  type VARCHAR(100) NOT NULL,
+  description TEXT NULL DEFAULT NULL
 );
 
 
-DROP TABLE IF EXISTS utilisateurs;
-
-CREATE TABLE utilisateurs (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(100),
-  prenom VARCHAR(100),
-  email VARCHAR(100)
+CREATE TABLE administration_serveurs (
+  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100) NOT NULL,
+  type_serveur_id BIGINT NOT NULL,
+  nombre_processeur INT NOT NULL,
+  capacite_memoire INT NOT NULL,
+  capacite_stockage INT NOT NULL,
+  FOREIGN KEY (type_serveur_id) REFERENCES administration_types_serveurs(id)
 );
 
 
-CREATE TABLE applications (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(100),
-  logo VARCHAR(100),
-  serveur_id INT,
-  utilisateur_id INT,
-  FOREIGN KEY (serveur_id) REFERENCES serveurs(id),
-  FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id)
+CREATE TABLE administration_utilisateurs (
+  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100) NOT NULL,
+  prenom VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE services (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(100),
-  date_lancement DATE,
-  espace_memoire_utilise INT,
-  memoire_vive_necessaire INT,
-  serveur_lancement_id INT,
-  FOREIGN KEY (serveur_lancement_id) REFERENCES serveurs(id)
+CREATE TABLE administration_services (
+  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100) NOT NULL,
+  date_lancement DATE NOT NULL,
+  espace_memoire_utilise BIGINT NOT NULL,
+  memoire_vive_necessaire BIGINT NOT NULL,
+  serveur_lancement_id BIGINT NOT NULL,
+  FOREIGN KEY (serveur_lancement_id) REFERENCES administration_serveurs(id)
 );
 
-CREATE TABLE usage_ressources (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  application_id INT,
-  service_id INT,
-  FOREIGN KEY (application_id) REFERENCES applications(id),
-  FOREIGN KEY (service_id) REFERENCES services(id)
+CREATE TABLE administration_applications (
+  id BIGINT  NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100) NOT NULL,
+  logo VARCHAR(100) NULL DEFAULT NULL,
+  serveur_id BIGINT NOT NULL,
+  utilisateur_id BIGINT NOT NULL,
+  FOREIGN KEY (serveur_id) REFERENCES administration_serveurs(id),
+  FOREIGN KEY (utilisateur_id) REFERENCES administration_utilisateurs(id)
 );
+
+CREATE TABLE administration_usage_ressources (
+  id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  application_id BIGINT  NOT NULL,
+  service_id BIGINT NOT NULL,
+  FOREIGN KEY (application_id) REFERENCES administration_applications(id),
+  FOREIGN KEY (service_id) REFERENCES administration_services(id)
+);
+
+
+INSERT INTO administration_utilisateurs (nom, prenom, email) VALUES ('admin', 'admin', 'admin@sae.com');
+INSERT INTO administration_utilisateurs (nom, prenom, email) VALUES ('anonyme', 'anonyme', 'anonyme@sae.com');
+INSERT INTO administration_types_serveurs (type, description) VALUES ('physique', 'Type de serveur physique');
+INSERT INTO administration_types_serveurs (type, description) VALUES ('virtuel', 'Type de serveur virtuel');
+INSERT INTO administration_services (nom, date_lancement, espace_memoire_utilise, memoire_vive_necessaire, serveur_lancement_id) VALUES
+('Service de messagerie', '2023-06-01', 200, 500, 1),
+('Service de stockage en ligne', '2023-05-15', 500, 1000, 2),
+('Service de streaming vidéo', '2023-06-10', 800, 1500, 1),
+('Service de sauvegarde automatique', '2023-06-05', 300, 700, 3);
+INSERT INTO administration_serveurs (nom, type_serveur_id, nombre_processeur, capacite_memoire, capacite_stockage) VALUES
+('Serveur 1', 1, 4, 8192, 500),
+('Serveur 2', 2, 8, 16384, 1000),
+('Serveur 3', 1, 6, 12288, 750),
+('Serveur 4', 2, 16, 32768, 2000);
