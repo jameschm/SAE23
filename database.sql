@@ -1,4 +1,7 @@
-USE sae23;
+ALTER TABLE serveurs
+DROP FOREIGN KEY serveurs_ibfk_1;
+
+DROP TABLE IF EXISTS types_serveurs;
 
 CREATE TABLE types_serveurs (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -6,6 +9,11 @@ CREATE TABLE types_serveurs (
   description TEXT
 );
 
+ALTER TABLE serveurs
+ADD CONSTRAINT serveurs_ibfk_1 FOREIGN KEY (type_serveur_id) REFERENCES types_serveurs(id);
+
+
+DROP TABLE IF EXISTS serveurs;
 
 CREATE TABLE serveurs (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -18,11 +26,24 @@ CREATE TABLE serveurs (
 );
 
 
+DROP TABLE IF EXISTS utilisateurs;
+
 CREATE TABLE utilisateurs (
   id INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(100),
   prenom VARCHAR(100),
   email VARCHAR(100)
+);
+
+
+CREATE TABLE applications (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100),
+  logo VARCHAR(100),
+  serveur_id INT,
+  utilisateur_id INT,
+  FOREIGN KEY (serveur_id) REFERENCES serveurs(id),
+  FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id)
 );
 
 CREATE TABLE services (
@@ -31,17 +52,8 @@ CREATE TABLE services (
   date_lancement DATE,
   espace_memoire_utilise INT,
   memoire_vive_necessaire INT,
-  foreign key (forserveur_lancement_id) references serveurs(id),
+  serveur_lancement_id INT,
   FOREIGN KEY (serveur_lancement_id) REFERENCES serveurs(id)
-);
-
-CREATE TABLE applications (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(100),
-  logo VARCHAR(100),
-  serveurs VARCHAR(100),
-  utilisateur_id INT,
-  FOREIGN KEY (utilisateur_id) REFERENCES utilisateurs(id)
 );
 
 CREATE TABLE usage_ressources (
