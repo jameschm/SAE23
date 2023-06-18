@@ -1,0 +1,44 @@
+#Configuration pour Gunicorn:
+
+Dans le fichier /home/koc/conf/gunicorn_config.py:
+
+command = '/home/koc/django_env/bin/gunicorn'
+pythonpath = '/home/koc/sae23'
+bind = '192.168.1.34:8000'
+workers = 3
+
+
+
+Dans settings du projet:
+
+ALLOWED_HOSTS = ['192.168.1.34']
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sae',
+        'HOST': '192.168.1.82',
+        'PORT':'3306',
+        'USER':'smd',
+        'PASSWORD':'smd-6761',
+    }
+}
+
+
+#Pour les configuration de nginx:
+
+Dans le fichier /etc/nginx/sites-available/sae23:
+
+server {
+        listen 80;
+        server_name 192.168.1.34;
+
+location /static/ {
+        root /home/koc/static/;
+}
+location / {
+        proxy_pass http://192.168.1.34:8000;
+        }
+}
+
+Note: Les fichiers django sont les mêmes.
