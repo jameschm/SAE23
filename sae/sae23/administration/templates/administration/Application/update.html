@@ -9,7 +9,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'administration/style.css' %}">
 </head>
 <body>
-<form id="msform" method="post" action="/update-application/{{id}}/">
+<form id="msform" method="post" action="/traitement-update-application/{{id}}/">
   {% csrf_token %}
   <fieldset>
     <h2 class="fs-title">Modification d'application</h2>

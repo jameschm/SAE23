@@ -70,9 +70,9 @@ def upload_file(request):
             with open(save_path, 'wb') as destination:
                 for chunk in uploaded_file.chunks():
                     destination.write(chunk)
-            nom = str(charger_txt("administration/media/temp/temp.txt", 0))
-            serveur_id = int(charger_txt("administration/media/temp/temp.txt", 1))
-            utilisateur_id = int(charger_txt("administration/media/temp/temp.txt", 2))
+            nom = str(charger_txt("administration/media/temp/administration/temp.txt", 0))
+            serveur_id = int(charger_txt("administration/media/temp/administration/temp.txt", 1))
+            utilisateur_id = int(charger_txt("administration/media/temp/administration/temp.txt", 2))
 
             # Récupérer les objets serveur et utilisateur correspondants
             serveur = models.serveurs.objects.get(pk=serveur_id)
