@@ -54,15 +54,15 @@ def traitement_update_Services(request, id):
         service = form.save(commit=False)
         service.id = id;
         service.save()
-        return HttpResponseRedirect("")
+        return HttpResponseRedirect("/")
     else:
         return render(request, "administration/Services/update.html", {"form": form, "id": id})
 
 def delete_Services(request, id):
     service=models.services.objects.get(pk=id)
     service.delete()
-    return HttpResponseRedirect("")
+    return HttpResponseRedirect("/")
 
 def affiche(request):
     base = list(models.services.objects.all())
-    return render(request, "administration/services/affiche.html", {"base": base})
+    return render(request, "administration/Services/affiche.html", {"base": base})
